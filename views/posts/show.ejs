@@ -28,7 +28,9 @@
   <div class="tools">
   <a href="/posts/<%=data._id%>/edit"><button>Edit</button></a>
   <!-- delete button here -->
-
+<form class="btn_delete" action="/posts/<%=data._id%>?_method=delete" method="post">
+  <button type="submit">Delete</button>
+</form>
 </div>
 <a href="/posts"><button>Back</button></a>
 </div>
