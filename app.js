@@ -30,6 +30,7 @@ app.set("view engine",'ejs');
 //set middlewares
 app.use(express.static(path.join(__dirname,'public')));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
 
 // set routes
 app.get('/posts', function(req,res){
@@ -38,12 +39,17 @@ app.get('/posts', function(req,res){
     res.render("posts/index",{data:posts});
     });
 }); // index
-app.post('/posts', function(req,res){
-  Post.create(req.body.post,function (err,post) {
-    if(err) return res.json({success:false, message:err});
-     res.json({success:true, data:post});
-      });
-    }); // create
+
+app.get('/posts/new', function(req,res){
+      res.render("posts/new");
+  });//new
+  app.post('/posts',function (req,res) {
+    console.log(req.body);
+    Post.create(req.body.post,function (err,post) {
+      if(err)return res.json({success:false,message:err});
+      res.redirect('/posts');
+    });
+  });// create
 app.get('/posts/:id', function(req,res){
   Post.findById(req.params.id, function (err,post) {
     if(err) return res.json({success:false, message:err});
