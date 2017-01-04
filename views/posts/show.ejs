@@ -16,12 +16,12 @@
   <h3><%= data.title %></h3>
   <div class="time">Created at <br>
     <%= data.createdAt.toLocaleDateString()%><br>
-    <%= data.createdAt.toLocaleDateString()%>
+    <%= data.createdAt.toLocaleTimeString()%>
   </div>
   <% if(data.updatedAt){%>
     <div class="time">Updated at<br>
       <%= data.createdAt.toLocaleDateString()%><br>
-      <%= data.createdAt.toLocaleDateString()%>
+      <%= data.createdAt.toLocaleTimeString()%>
     </div>
   <%}%>
   <p class="body"><%=data.body%><p>
